@@ -4,12 +4,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { LayoutComponent } from './layout/layout.component';
-import { FavoritesComponent } from './favorites/favorites.component';
 import { SearchComponent } from './search/search.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { from } from 'rxjs';
 import { HomeComponent } from './home/home.component';
+import { FavoritesComponent } from './favorites/favorites.component';
+import { IconsComponent } from './icons/icons.component';
+
 
 
 @NgModule({
@@ -18,8 +20,11 @@ import { HomeComponent } from './home/home.component';
     HeaderComponent,
     LayoutComponent,
     HomeComponent,
-    FavoritesComponent,
     SearchComponent,
+    FavoritesComponent,
+    IconsComponent,
+    
+  
    
 
   ],

@@ -5,6 +5,7 @@ import { from } from 'rxjs';
 import { Location1 } from '../models/location/Location1';
 import { CurrentWeather } from '../models/CurrentWeather/CurrentWeather';
 import { Temperature } from '../models/CurrentWeather/Temperature';
+import { FiveDaysInstance } from '../models/5Days/FiveDayInstance';
 
 @Component({
   selector: 'app-search',
@@ -23,15 +24,14 @@ export class SearchComponent implements OnInit {
     }
     
   ngOnInit() {
-  
-    
   }
-  
+  fiveDays:FiveDaysInstance[];
+  date:Date
   location1: Location1;
   locationArr:Location1[];
   currentWeather:CurrentWeather;
   currentWeatherArr:CurrentWeather[];
-  Temperature:Temperature;
+  temperature:Temperature;
   cityNumber:string = ''
   lang:string = 'en-us'
   key:string = 'JO9lp56KXsfXMSTf1GZRhg0Vg7kZGHzQ';
@@ -77,4 +77,23 @@ this.wheather.getCurrentWeather(this.lang,this.key,this.location1).subscribe(
   )
      } 
   
+     public getFiveDayWeather(){
+      this.wheather.getFiveDayWeather(this.lang,this.key,this.location1).subscribe(
+        response => {
+          this.fiveDays = response;
+          console.log(this.fiveDays);
+         // this.currentWeather = this.currentWeatherArr[0];
+          this.date = this.fiveDays[0].DayliForecast.Date;
+          console.log(this.date);
+          this.weatherIcon =this.currentWeather.WeatherIcon;
+          console.log(this.weatherIcon);
+          this.sendToParent();
+         }, err => {
+          alert("Error " + err.massage)
+        } 
+        
+      
+        )
+           } 
+        
 }

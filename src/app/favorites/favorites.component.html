@@ -1,1 +1,10 @@
-<p>favorites works!</p>
+ <div *ngFor="let item of FavoritCity">
+<div   class="card" style="width: 18rem;">
+    <img src="../../assets/WetherIcons/{{item.weatherIcon}}-s.png" class="card-img-top">
+    <div class="card-body">
+      <h5 class="card-title">{{item}}</h5>
+      <p class="card-text">p</p>
+    </div>
+  </div>
+</div>
+   

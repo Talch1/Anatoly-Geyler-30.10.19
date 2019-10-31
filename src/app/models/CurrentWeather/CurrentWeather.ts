@@ -1,5 +1,5 @@
 import { Temperature } from './Temperature';
-import { Metric } from '../metric';
+import { Metric } from './Metric';
 import { Imperial } from './Imperial';
 
 export class CurrentWeather {
