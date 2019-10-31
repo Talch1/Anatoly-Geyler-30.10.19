@@ -1,10 +1,12 @@
-<app-search  (outToParent)='receiveFromChild($event)'></app-search>
+<app-search  (outToParent) ='receiveFromChild($event)'
+
+></app-search>
 
 <div class="image">
     <div class="float-right"><button type="button" class="btn btn-success">Add to favorite</button></div>
-    <img src="../../assets/367527-64.png" class="rounded float-left">
+    <img src="../../assets/WetherIcons/{{this.weatherIcon}}-s.png" class="rounded float-left">
     <p>{{this.city}}</p>
-    <p>+38</p>
+    <p>{{todayWheather}}</p>
 
     <div class="row">
         <div class="col">

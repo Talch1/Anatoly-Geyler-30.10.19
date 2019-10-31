@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { WeatherServiceService } from '../services/weather-service.service';
-import { ConnectServiceService } from '../services/connect-service.service';
+
 
 
 @Component({
@@ -10,7 +10,16 @@ import { ConnectServiceService } from '../services/connect-service.service';
 })
 export class HomeComponent implements OnInit {
 
-  city:string ="Tel aviv" ;
+  fromChild:any[];
+  city:string ='Tel aviv' ;
+  todayWheather :string ='+3';
+  weatherIcon:number ;
+
+  receveData(){
+   this.city= this.fromChild[0];
+   this.todayWheather = this.fromChild[1];
+   this.weatherIcon = this.fromChild[2];
+  };
 
   constructor(private weatherService:WeatherServiceService) { }
 
@@ -18,7 +27,9 @@ export class HomeComponent implements OnInit {
 
   }
   receiveFromChild(evnt){
- this.city = evnt;
+ this.fromChild= evnt;
+ this.receveData();
  }
+ 
 
     }

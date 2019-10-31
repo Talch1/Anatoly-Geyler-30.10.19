@@ -12,15 +12,16 @@ export class WeatherServiceService {
   constructor(private http:HttpClient) { }
 
   baseUrl = 'http://dataservice.accuweather.com/locations/v1'
+  baseUrl2 = 'http://dataservice.accuweather.com/currentconditions/v1'
 
   public getLocation(lang:string,key:string,city:string): Observable<Location1[]>{
     return this.http.get<Location1[]>(this.baseUrl +"/cities/autocomplete?q="+ city +"&language="+ lang+"&apikey=" + key );
    }
 
    
-   public getCurrentWeather(lang:string,key:string,loc:Location1): Observable<CurrentWeather>{
-     return this.http.get<CurrentWeather>(this.baseUrl+"/" +loc.Key+"?apikey="+key+"&language="+lang+"&details=false");
+   public getCurrentWeather(lang:string,key:string,loc:Location1): Observable<CurrentWeather[]>{
+     return this.http.get<CurrentWeather[]>(this.baseUrl2+"/" +loc.Key+"?apikey="+key+"&language="+lang+"&details=false");
     }
-
+ 
 
 }
