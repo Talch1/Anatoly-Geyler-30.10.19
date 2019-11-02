@@ -8,23 +8,33 @@ import { DataService } from '../services/data.service';
   selector: 'app-favorites',
   templateUrl: './favorites.component.html',
   styleUrls: ['./favorites.component.css'],
-  providers:[]
+  providers:[DataService,WeatherServiceService]
 })
 export class FavoritesComponent implements OnInit {
 
-  constructor(private wheather:WeatherServiceService,private serv:DataService) {
   
-   }
+    
+FavoritCity:string[] = [];      
+  constructor(private wheather:WeatherServiceService,private serv:DataService) {
+    this.serv.onClick.subscribe(cnt=>this.FavoritCity = cnt);
+  }
+
+   
   lang:string = 'en-us'
   key:string = 'JO9lp56KXsfXMSTf1GZRhg0Vg7kZGHzQ';
   city:string = 'Tel aviv'
 
   
-FavoritCity:string[]=[];
   
-  
+
+
   ngOnInit() {
-this.FavoritCity = this.serv.favoritCity;
+   
+    console.log(this.FavoritCity)
   }
 
 }
+
+
+ 
+ 

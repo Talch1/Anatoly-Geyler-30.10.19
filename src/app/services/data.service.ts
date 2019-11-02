@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
@@ -7,10 +7,33 @@ export class DataService {
 
   constructor() { }
 
-  favoritCity:string[];
+  favoritCity:string[] = ['Tel Aviv'];
 
-  AddtoFav(s:string){
-    this.favoritCity.push(s)
+  onClick:EventEmitter<string[]> = new EventEmitter();
+
+  
+  public doClick(){
+
+    this.onClick.emit(this.favoritCity);
   }
+  
+
+
+  setData(s:string[]){
+    this.favoritCity= s;
+    
+  }
+getData(){
+  let temp = this.favoritCity;
+
+  return temp;
+}
+ 
+
+
+
 
 }
+
+
+  

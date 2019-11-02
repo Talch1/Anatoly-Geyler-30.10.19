@@ -10,7 +10,7 @@ import { FormsModule } from '@angular/forms';
 import { from } from 'rxjs';
 import { HomeComponent } from './home/home.component';
 import { FavoritesComponent } from './favorites/favorites.component';
-import { IconsComponent } from './icons/icons.component';
+
 
 
 
@@ -22,19 +22,12 @@ import { IconsComponent } from './icons/icons.component';
     HomeComponent,
     SearchComponent,
     FavoritesComponent,
-    IconsComponent,
-    
-  
-   
-
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule, 
+    HttpClientModule,
     FormsModule
-
-
   ],
   providers: [SearchComponent],
   bootstrap: [AppComponent]

@@ -1,14 +1,24 @@
-<app-search  (outToParent) ='receiveFromChild($event)'
-
-></app-search>
+<app-search (outToParent)='receiveFromChild($event)'></app-search>
 
 <div class="image">
-    <div class="float-right"><button type="button" class="btn btn-success" (click)="AddFavorite()">Add to favorite</button></div>
-    <img src="../../assets/WetherIcons/{{this.weatherIcon}}-s.png" class="rounded float-left">
-    <p>{{this.city}}</p>
-    <p>{{todayWheather}}</p>
+    <div class="float-right"><button type="button" class="btn btn-success" (click)="AddFavorite()">Add to
+            favorite</button></div>
+    <div class="today">
+        <img src="../../assets/WetherIcons/{{this.weatherIcon}}-s.png" class="rounded float-left">
+        <p>{{this.city}}</p>
+        <p>{{todayWheather}}</p>
 
-       
-    <app-icons ></app-icons>
+        <div class="row">
+            <div class="col" *ngFor="let item of daily">
+                <div>
+                    <label>{{item.Date|date:'EEEE'}}</label>
+                    <img src="../../assets/WetherIcons/{{item.Day.Icon}}-s.png" class="rounded float-left">
+                    <p>{{item.Temperature.Maximum.Value}}</p>
+                    <p>{{item.Temperature.Maximum.Value}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
 
 </div>

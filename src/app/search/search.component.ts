@@ -6,6 +6,7 @@ import { Location1 } from '../models/location/Location1';
 import { CurrentWeather } from '../models/CurrentWeather/CurrentWeather';
 import { Temperature } from '../models/CurrentWeather/Temperature';
 import { FiveDaysInstance } from '../models/5Days/FiveDayInstance';
+import { DailyForecast } from '../models/5Days/DailyForecast';
 
 @Component({
   selector: 'app-search',
@@ -13,87 +14,79 @@ import { FiveDaysInstance } from '../models/5Days/FiveDayInstance';
   styleUrls: ['./search.component.css']
 })
 export class SearchComponent implements OnInit {
-  
 
-  constructor(private wheather:WeatherServiceService) { }
+
+  constructor(private weather: WeatherServiceService) { }
 
   @Output() public outToParent = new EventEmitter<any[]>();
 
   sendToParent() {
-    this.outToParent.emit([this.city,String(this.todayTemperature),this.weatherIcon]);
-    }
-    
+    this.outToParent.emit([this.city, String(this.todayTemperature), this.weatherIcon,this.daily]);
+  }
+
   ngOnInit() {
   }
-  fiveDays:FiveDaysInstance[];
-  date:Date
-  location1: Location1;
-  locationArr:Location1[];
-  currentWeather:CurrentWeather;
-  currentWeatherArr:CurrentWeather[];
-  temperature:Temperature;
-  cityNumber:string = ''
-  lang:string = 'en-us'
-  key:string = 'JO9lp56KXsfXMSTf1GZRhg0Vg7kZGHzQ';
-  city:string = 'Tel aviv'
-  todayTemperature:number =35;
-  weatherIcon:number = 2;
+  fiveDays: FiveDaysInstance= new FiveDaysInstance();
+  daily: DailyForecast[]=[];
+
+  location1: Location1 = new Location1();
+  locationArr: Location1[] = [];
+
+  currentWeather: CurrentWeather = new CurrentWeather();
+  currentWeatherArr: CurrentWeather[] = []
+  temperature: Temperature = new Temperature();
+
+  cityNumber: string = ''
+  lang: string = 'en-us'
+  key: string = 'JO9lp56KXsfXMSTf1GZRhg0Vg7kZGHzQ';
+  city: string = 'Tel aviv'
+  todayTemperature: number = 35;
+  weatherIcon: number = 2;
   ;
-  
-  
-   public getLocation(){
-
-    this.wheather.getLocation(this.lang,this.key,this.city).subscribe(
-     response => {
-       this.locationArr = response;
-      this.location1 = this.locationArr[0];
-      this.cityNumber = this.location1.Key;
-      console.log(this.cityNumber);
- 
-      this.getCurrentlyWeather();
-      }, err => {
-       alert("Error " + err.massage)
-     }
-    ) 
-    }
 
 
-    public getCurrentlyWeather(){
-this.wheather.getCurrentWeather(this.lang,this.key,this.location1).subscribe(
-  response => {
-    this.currentWeatherArr = response;
-    console.log(this.currentWeatherArr);
-    this.currentWeather = this.currentWeatherArr[0];
-    this.todayTemperature = this.currentWeather.Temperature.Metric.Value;
-    console.log(this.todayTemperature);
-    this.weatherIcon =this.currentWeather.WeatherIcon;
-    console.log(this.weatherIcon);
-    this.sendToParent();
-   }, err => {
-    alert("Error " + err.massage)
-  } 
-  
+  // public getLocation() {
 
-  )
-     } 
-  
-     public getFiveDayWeather(){
-      this.wheather.getFiveDayWeather(this.lang,this.key,this.location1).subscribe(
-        response => {
-          this.fiveDays = response;
-          console.log(this.fiveDays);
-         // this.currentWeather = this.currentWeatherArr[0];
-          this.date = this.fiveDays[0].DayliForecast.Date;
-          console.log(this.date);
-          this.weatherIcon =this.currentWeather.WeatherIcon;
-          console.log(this.weatherIcon);
-          this.sendToParent();
-         }, err => {
-          alert("Error " + err.massage)
-        } 
-        
-      
-        )
-           } 
-        
+  //   this.weather.getLocation(this.lang, this.key, this.city).subscribe(
+  //     response => {
+  //       this.locationArr = response;
+  //       this.location1 = this.locationArr[0];
+  //       this.cityNumber = this.location1.Key;
+  //       this.getCurrentlyWeather();
+  //       console.log(this.location1)
+  //     }, err => {
+  //       alert("Error " + err.massage)
+  //     }
+  //   )
+  // }
+
+  // public getCurrentlyWeather() {
+  //   this.weather.getCurrentWeather(this.lang, this.key, this.location1).subscribe(
+  //     response => {
+  //       this.currentWeatherArr = response;
+  //       this.getFiveDayWeather();
+  //       this.currentWeather = this.currentWeatherArr[0];
+  //       this.todayTemperature = this.currentWeather.Temperature.Metric.Value;
+  //       this.weatherIcon = this.currentWeather.WeatherIcon;
+  //     }, err => {
+  //       alert("Error " + err.massage)
+  //     }
+  //   )
+  // }
+  // getFiveDayWeather() {
+  //   this.weather.getFiveDayWeather(this.lang, this.key, this.location1).subscribe(
+  //     response => {
+  //       this.fiveDays = response;
+  //       this.daily = this.fiveDays.DailyForecasts;
+  //       console.log(this.daily);
+  //       this.sendToParent();
+  //     }, err => {
+  //       alert("Error " + err.massage)
+  //     }
+
+
+    //)
+
+ // }
+
 }
