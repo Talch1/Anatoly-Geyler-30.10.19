@@ -6,19 +6,16 @@
     <div class="today">
         <img src="../../assets/WetherIcons/{{this.weatherIcon}}-s.png" class="rounded float-left">
         <p>{{this.city}}</p>
-        <p>{{todayWheather}}</p>
-
+        <p>{{todayWheather | number:'1.0-0'}}</p>
         <div class="row">
             <div class="col" *ngFor="let item of daily">
                 <div>
                     <label>{{item.Date|date:'EEEE'}}</label>
                     <img src="../../assets/WetherIcons/{{item.Day.Icon}}-s.png" class="rounded float-left">
-                    <p>{{item.Temperature.Maximum.Value}}</p>
-                    <p>{{item.Temperature.Maximum.Value}}</p>
+                    <p>{{item.Temperature.Maximum.Value | number:'1.0-0'}}</p>
+                    <p>{{item.Temperature.Minimum.Value | number:'1.0-0'}}</p>
                 </div>
             </div>
         </div>
     </div>
-
-
 </div>

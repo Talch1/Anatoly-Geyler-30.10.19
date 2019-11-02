@@ -2,4 +2,8 @@
     margin: 50px;
     background-color: aliceblue;
     text-align: center;
+    
+}
+.display{
+    display: flex;
 }
