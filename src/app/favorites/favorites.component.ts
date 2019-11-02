@@ -6,7 +6,6 @@ import { Temperature } from '../models/CurrentWeather/Temperature';
 import { Favorite } from '../models/Favorite';
 
 
-
 @Component({
   selector: 'app-favorites',
   templateUrl: './favorites.component.html',
@@ -46,7 +45,6 @@ export class FavoritesComponent implements OnInit {
           this.location1 = this.locationArr[0];
           this.locKey = this.location1.Key;
           this.cityNunbrs.push(this.locKey);
-          console.log(this.cityNunbrs)
           this.getCurrentlyWeather();
         }, err => {
           alert("Error " + err.massage)

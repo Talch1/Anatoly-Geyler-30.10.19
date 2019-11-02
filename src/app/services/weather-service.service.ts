@@ -10,9 +10,9 @@ import { FiveDaysInstance } from '../models/5Days/FiveDayInstance';
 })
 export class WeatherServiceService {
 
-  baseUrl1: string = 'http://dataservice.accuweather.com/locations/v1'
-  baseUrl2: string = 'http://dataservice.accuweather.com/currentconditions/v1'
-  baseUrl3: string = 'http://dataservice.accuweather.com/forecasts/v1/daily/5day/'
+  baseUrl1: string = 'https://dataservice.accuweather.com/locations/v1'
+  baseUrl2: string = 'https://dataservice.accuweather.com/currentconditions/v1'
+  baseUrl3: string = 'https://dataservice.accuweather.com/forecasts/v1/daily/5day/'
 
   constructor(private http: HttpClient) { }
 

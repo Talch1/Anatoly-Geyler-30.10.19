@@ -34,7 +34,6 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
 
     this.weather.currentMessage.subscribe(favoritCity => this.favoritCity = favoritCity);
-    console.log(this.favoritCity);
   }
 
   receveData() {
@@ -52,7 +51,6 @@ export class HomeComponent implements OnInit {
   AddFavorite() {
     this.favoritCity.push(this.city);
     this.weather.changeMessage(this.favoritCity);
-    console.log(this.favoritCity)
   }
 }
 
